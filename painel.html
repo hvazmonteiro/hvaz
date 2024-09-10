@@ -1,38 +1,3 @@
-<?php
-include('php/protect.php');
-include_once('php/conexao.php');
-$dataatual = date('y-m-d');
-$hora = date('H:i');
-$nome = $_SESSION['nome'];
-
-	$sql = "SELECT id,
-
-	DATE_FORMAT(datasolicitacao,'%d/%m/%Y') AS DataFormatada,
-
-	horasolicitacao,solicitante,paciente,setor,leito,destino,observacao,maqueiro,horaentrega,statusc,transporte FROM snd.maqueiros 
-		
-	where solicitante = '$nome' and
-		
-	statusc = 'Pendente' ORDER BY horasolicitacao asc";
-
-    $result = $mysqli->query($sql);
-
-?>
-
-	<style>
-
-		table, th, td {
-            border: 2px solid black;
-            border-collapse: collapse;
-            padding: 20px;
-			cellpadding: 20px;
-			color: black;
-			text-align: center;
-			height: 50px;
-			width: 300px;
-        }
-
-	</style>
 
 
 
@@ -80,6 +45,24 @@ $nome = $_SESSION['nome'];
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="css/responsive.css">
+		
+		
+
+	<style>
+
+		table, th, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+			cellpadding: 20px;
+			color: black;
+			text-align: center;
+			height: 50px;
+			width: 300px;
+        }
+
+	</style>
+
 		
     </head>
     <body>
@@ -187,7 +170,7 @@ $nome = $_SESSION['nome'];
 				<div class="row">
 					<div class="col-lg-20">
 						<div>
-							<h3>Minhas solicitações de maqueiro:</h3><br>
+							<h3>Painel de solicitações ao maqueiro:</h3><br>
 
 							<table class="tablebg">
 								<thead>
@@ -201,34 +184,35 @@ $nome = $_SESSION['nome'];
 									<th scope="col">Destino</th>
 									<th scope="col">Transporte</th>                
 									<th scope="col">Observação</th>
-									<th scope="col">Status</th>
-									<th scope="col">Cancelar</th>                 
+									<th scope="col">Status</th>             
 									</tr>
 								</thead>
 								<tbody>
-									<?php
-										while($user_data = mysqli_fetch_assoc($result)){
-											echo "<tr>";
-											echo "<td>" . $user_data['DataFormatada']."</td>";
-											echo "<td>" . $user_data['solicitante']."</td>";
-											echo "<td>" . $user_data['horasolicitacao']."</td>";
-											echo "<td>" . $user_data['paciente']."</td>";
-											echo "<td>" . $user_data['setor']."</td>";
-											echo "<td>" . $user_data['leito']."</td>";
-											echo "<td>" . $user_data['destino']."</td>";
-											echo "<td>" . $user_data['transporte']."</td>";
-											echo "<td>" . $user_data['observacao']."</td>";
-											echo "<td>" . $user_data['statusc']."</td>";
-											
-											echo "<td>
-											
-												<a style='color:white;background-color:red;border-radius: 10px;padding:5px'
-												
-												href='cancelarMaqueiro.php?id=$user_data[id]'> Cancelar </a></td>";
-											
-											echo "<tr>";
-										}
-									?>
+									<tr>
+									<td scope="col">10/09</td>
+									<td scope="col">Jéssica</td>
+									<td scope="col">13h43</td>
+									<td scope="col">João</td>
+									<td scope="col">Ala B</td>
+									<td scope="col">201</td>
+									<td scope="col">ECOMED</td>
+									<td scope="col">Maca</td>                
+									<td scope="col">Com oxigênio</td>
+									<td scope="col">Pendente</td>               
+									</tr>
+									
+									<tr>
+									<td scope="col">10/09</td>
+									<td scope="col">Carina</td>
+									<td scope="col">14h00</td>
+									<td scope="col">Maria</td>
+									<td scope="col">Ala C</td>
+									<td scope="col">302</td>
+									<td scope="col">PSA</td>
+									<td scope="col">Cadeira</td>                
+									<td scope="col"></td>
+									<td scope="col">Pendente</td>               
+									</tr>
 								</tbody>
 						</table>
 							
