@@ -1,31 +1,3 @@
-<?php
-include('php/protect.php');
-include_once('php/conexao.php');
-$dataatual = date('y-m-d');
-$hora = date('H:i');
-
-if (isset($_POST['submit'])) {
-
-	$solicitante = $_SESSION['nome'];
-    $paciente = $_POST['paciente'];
-    $setor = $_POST['setor'];
-    $leito = $_POST['leito'];
-	$destino = $_POST['destino'];
-	$transporte = $_POST['transporte'];
-	$datasolicitacao = $dataatual;
-	$horasolicitacao = $hora;
-	$status = 'Pendente';
-
-    $result = mysqli_query($mysqli, "INSERT INTO maqueiros
-        (solicitante,paciente,setor,leito,destino,transporte,datasolicitacao,horasolicitacao,statusc)
-        values 
-        ('$solicitante','$paciente','$setor','$leito','$destino','$transporte','$datasolicitacao','$horasolicitacao','$status')");
-
-    header("Location: painel.php");
-}
-
-?>
-
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
@@ -133,81 +105,17 @@ if (isset($_POST['submit'])) {
 								<div class="main-menu">
 									<nav class="navigation">
 										<ul class="nav menu">
-											<li class="active"><a href="maqueiros.php">Menu </a></li>
-											<li><a href="painel.php">Minhas Solicitações </a></li>
-											<!--<li><a href="#">Relatórios <i class="icofont-rounded-down"></i></a>
+											<li class="active"><a href="maqueiros.html">Menu </a></li>
+											<li><a href="painel.html">Minhas Solicitações </a></li>
+											<li><a href="#">Relatórios <i class="icofont-rounded-down"></i></a>
 												<ul class="dropdown">
 													<li><a href="index.html">1 - Quantidade de chamadas por período</a></li>
 													<li><a href="index.html">2 - Setores que mais solicitam</a></li>
 													<li><a href="index.html">3 - Todas as solicitações por período</a></li>
 												</ul>
-											</li>-->
-											<!--<li><a href="atender.php">Atender </a></li>-->
-
-											<li>
-												<?php
-												    //OTAVIO
-													if ($_SESSION['nome'] == 'OTAVIO ALEIXO RODRIGUES'){
-														echo '
-															<li><a href="#">Relatórios <i class="icofont-rounded-down"></i></a>
-															<ul class="dropdown">
-																<li><a href="index.html">1 - Quantidade de chamadas por período</a></li>
-																<li><a href="index.html">2 - Setores que mais solicitam</a></li>
-																<li><a href="index.html">3 - Todas as solicitações por período</a></li>
-															</ul>
-														</li>														
-														';
-													}
-													
-													//KELVYN
-													if ($_SESSION['nome'] == 'KELVYN GARCIA SOUZA'){
-														echo '
-															<li><a href="#">Relatórios <i class="icofont-rounded-down"></i></a>
-															<ul class="dropdown">
-																<li><a href="index.html">1 - Quantidade de chamadas por período</a></li>
-																<li><a href="index.html">2 - Setores que mais solicitam</a></li>
-																<li><a href="index.html">3 - Todas as solicitações por período</a></li>
-															</ul>
-														</li>														
-														';
-													}
-													
-													//JESSICA
-													if ($_SESSION['nome'] == 'JESSICA DE MELO MOREIRA'){
-														echo '
-															<li><a href="#">Relatórios <i class="icofont-rounded-down"></i></a>
-															<ul class="dropdown">
-																<li><a href="index.html">1 - Quantidade de chamadas por período</a></li>
-																<li><a href="index.html">2 - Setores que mais solicitam</a></li>
-																<li><a href="index.html">3 - Todas as solicitações por período</a></li>
-															</ul>
-														</li>														
-														';
-													}
-
-												?>
-
-											<li>
-												<?php
-												    //OTAVIO
-													if ($_SESSION['nome'] == 'OTAVIO ALEIXO RODRIGUES'){
-														echo '<b><a href="atender.php">Atender</a></b>';
-													}
-													//KELVYN
-													if ($_SESSION['nome'] == 'KELVYN GARCIA SOUZA'){
-														echo '<b><a href="atender.php">Atender</a></b>';
-													}
-													//JESSICA
-													if ($_SESSION['nome'] == 'JESSICA DE MELO MOREIRA'){
-														echo '<b><a href="atender.php">Atender</a></b>';
-													}
-													//MAQUEIROS
-													if ($_SESSION['nome'] == 'MAQUEIROS - HVM'){
-														echo '<b><a href="atender.php">Atender</a></b>';
-													}
-												?>
-
 											</li>
+											<li><a href="atender.html">Atender </a></li>
+
 											<li><a href="php/logout.php">Sair</a></li>
 						</div>
 					</div>
