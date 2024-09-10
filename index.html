@@ -1,53 +1,3 @@
-<?php
-    include('php/conexao.php');
-
-    if(isset($_POST['cpf']) || isset($_POST['senha'])){
-
-        if(strlen($_POST['cpf']) == 0){
-            echo "Preencha seu CPF!";
-        } else if(strlen($_POST['senha']) == 0){
-            echo "Preencha seu senha!";
-        } else {
-
-            $cpf = $mysqli -> real_escape_string($_POST['cpf']);
-            $senha = $mysqli -> real_escape_string($_POST['senha']);
-
-            $sql_code = "SELECT * FROM usuarios WHERE cpf = '$cpf' AND senha = '$senha'";
-            $sql_query = $mysqli -> query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-
-            $quantidade = $sql_query-> num_rows;
-
-            if($quantidade == 1){
-
-                $usuario = $sql_query -> fetch_assoc();
-
-                if(!isset($_SESSION)){
-                    session_start();
-                }
-
-                $_SESSION['id'] = $usuario['id'];
-                $_SESSION['nome'] = $usuario['nome'];
-                $_SESSION['spdata'] = $usuario['spdata'];
-                $_SESSION['nomesetor'] = $usuario['nomesetor'];
-                $_SESSION['chapa'] = $usuario['chapa'];
-                $_SESSION['locals'] = $usuario['locals'];
-                
-
-
-                header("Location: maqueiros.php");
-
-            } else {
-                echo "Falha ao logar! E-mail ou senha incorretos";
-            }
-
-        }
-
-
-    }
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="pt-bt">
 <head>
@@ -90,7 +40,7 @@
             </p>
             <p>
                 <br>
-                <button class="tela-login" type="submit">Entrar</button>
+                <a href='maqueiros.html'<button class="tela-login" type="submit">Entrar</button></a>
             </p>
         </form>
         <br><p><b>OBS: Use a mesma senha do sistema de refeições do SND</b></p>
