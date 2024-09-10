@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background-image: linear-gradient(100deg, cyan, green);
+}
+
+img{
+   width: 120px; 
+}
+
+.header,.navigation_header.conteudo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header{
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 100px;
+    justify-content: space-between;
+    padding: 0 10%; 
+}
+.navigation_header{
+    gap: 2em;
+}
+.navigation_header a{
+    text-decoration: none;
+    color: white;
+    transition: 1s;
+    font-weight: bold;
+    background-color: darkred;
+    padding: 10px;
+    border-radius: 10px;
+}
